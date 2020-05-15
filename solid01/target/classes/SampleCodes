@@ -1,0 +1,132 @@
+//############### LinkedList, Iterator, ListIterator
+		Collection<String> list = new LinkedList<>();
+		list.add("Maggie");
+		list.add("Pepsi");
+		list.add("CocaCola");
+		list.add("Maaza");
+        System.out.println("Using foreach ");
+        for(String productName: list) {
+        	System.out.println(productName);
+        }
+        System.out.println("Using Iterator");
+		Iterator<String> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+//        	java.util.ConcurrentModificationException
+//        	list.add("free gift");
+		}
+		System.out.println("Before \n"+list);
+		System.out.println("\n");
+		ListIterator<String> listIterator=((LinkedList)list).listIterator();
+		while(listIterator.hasNext()) {
+			System.out.println(listIterator.next());
+			listIterator.add("Gift voucher");
+		}
+		
+		System.out.println("\nAfter "+list);
+//############### Set, Iterator, SortedSet
+	//HashSet and TreeSet
+				Collection<String> set=new TreeSet<>();
+				set.add("Maggie");
+				set.add("Pepsi");
+				set.add("CocaCola");
+				set.add("Maaza");
+				set.add("CocaCola");
+				
+				System.out.println(set );
+				System.out.println("########################");
+				for(String productName: set) {
+					System.out.println(productName);
+				}
+				System.out.println("########################");
+				Iterator<String> iterator=set.iterator();
+				while(iterator.hasNext()) {
+					System.out.println(iterator.next());
+				}
+				
+	
+		//HashSet and TreeSet
+				Collection<String> set=new TreeSet<>();
+				set.add("Maggie");
+				set.add("Pepsi");
+				set.add("CocaCola");
+				set.add("Maaza");
+				set.add("CocaCola");
+				
+				System.out.println(set );
+				System.out.println("########################");
+				for(String productName: set) {
+					System.out.println(productName);
+				}
+				System.out.println("########################");
+				Iterator<String> iterator=set.iterator();
+				while(iterator.hasNext()) {
+					System.out.println(iterator.next());
+				}
+				
+	Set<BankAccount> accountSet=new TreeSet();
+		accountSet.add(new BankAccount(1001, "Ajit", 10000));
+		accountSet.add(new BankAccount(1002, "Amit", 10000));
+		accountSet.add(new BankAccount(1003, "Ankit", 10000));
+		System.out.println(accountSet);
+//		To Sort by Name
+		Comparator<BankAccount> comparator=new Comparator<BankAccount>() {
+			@Override
+			public int compare(BankAccount o1, BankAccount o2) {
+				return o1.getAccName().compareTo(o2.getAccName());
+			}
+		}; 
+		accountSet=new TreeSet(comparator);
+		accountSet.add(new BankAccount(1001, "Amit", 10000));
+		accountSet.add(new BankAccount(1002, "Ankit", 10000));
+		accountSet.add(new BankAccount(1003, "Ajit", 10000));
+		System.out.println(accountSet);
+		
+	Set<BankAccount> accountSet=new TreeSet<>();
+		accountSet.add(new BankAccount(1001, "Ajit", 10000));
+		accountSet.add(new BankAccount(1002, "Amit", 10000));
+		accountSet.add(new BankAccount(1003, "Ankit", 10000));
+		System.out.println(accountSet);
+		System.out.println("sort in accNo desc");
+		
+//		Comparator<BankAccount> comparator=new Comparator<BankAccount>() {
+//			@Override
+//			public int compare(BankAccount o1, BankAccount o2) {
+//				return o2.getAccNo()-o1.getAccNo();
+//			}
+//		};
+//		accountSet=new TreeSet<>(comparator);
+//		accountSet.add(new BankAccount(1001, "Ajit", 10000));
+//		accountSet.add(new BankAccount(1002, "Amit", 10000));
+//		accountSet.add(new BankAccount(1003, "Ankit", 10000));
+//		System.out.println(accountSet);
+		
+//		Comparator<BankAccount> comparator=(o1,o2)->{return o2.getAccNo()-o1.getAccNo();};
+//		accountSet=new TreeSet<>(comparator);
+//		accountSet.add(new BankAccount(1001, "Ajit", 10000));
+//		accountSet.add(new BankAccount(1002, "Amit", 10000));
+//		accountSet.add(new BankAccount(1003, "Ankit", 10000));
+//		System.out.println(accountSet);
+		
+		accountSet=new TreeSet<>((o1,o2)->{return o2.getAccNo()-o1.getAccNo();}) ;
+		accountSet.add(new BankAccount(1001, "Ajit", 10000));
+		accountSet.add(new BankAccount(1002, "Amit", 10000));
+		accountSet.add(new BankAccount(1003, "Ankit", 10000));
+		System.out.println(accountSet);		
+		
+		Map<Integer,String> map=new HashMap<>();
+		map.put(1001, "Aditi");
+		map.put(1002, "Aditya");
+		map.put(1003, "Adinath");
+		System.out.println(map);
+	    for(Map.Entry<Integer, String> entry : map.entrySet()) {
+	    	System.out.println(entry.getKey()+" : "+entry.getValue());
+	    }
+	    System.out.println("Using keySEt().iterator()");
+		Iterator keyIterator=map.keySet().iterator();
+		while(keyIterator.hasNext()) {
+			Object key=keyIterator.next();
+			System.out.println(key+" : " +map.get(key));
+		}
+		
+		final List<String> myList;
