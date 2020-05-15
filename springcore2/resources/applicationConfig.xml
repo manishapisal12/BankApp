@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+xsi:schemaLocation="
+
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+<bean name="address" class="com.mastek.core.model.Address">
+
+<property name="line1" value="MBP"></property>
+
+<property name="line2" value="Mahape"></property>
+
+<property name="city" value="Ghansoli"></property>
+
+<property name="state" value="Maharashtra"></property>
+
+<property name="pincode" value="400730"></property>
+
+</bean>
+
+
+
+<bean name="person" class="com.mastek.core.model.Person"
+
+autowire="byType">
+
+<property name="pid" value="123"></property>
+
+<property name="first_name" value="Aditya"></property>
+
+<property name="last_name" value="Satam"></property>
+
+</bean>
+
+
+
+<!--BankAccount account=new BankAccount() accNo=0 person=null balance=0.0 -->
+
+<bean name="account" class="com.mastek.core.model.BankAccount">
+
+<property name="accNo" value="1001"></property>
+
+<property name="balance" value="100000"></property>
+
+<property name="person" ref="person" ></property>
+
+</bean>
+
+
+
+<bean name="account2" class="com.mastek.core.model.BankAccount">
+
+<constructor-arg name="accNo" value="1003"></constructor-arg>
+
+<constructor-arg name="balance" value="100000"></constructor-arg>
+
+<constructor-arg name="person">
+
+<bean name="person1" class="com.mastek.core.model.Person">
+
+<property name="pid" value="124"></property>
+
+<property name="first_name" value="Aditi"></property>
+
+<property name="last_name" value="Satam"></property>
+
+<property name="address">
+
+<bean name="address1" class="com.mastek.core.model.Address">
+
+<property name="line1" value="MBP"></property>
+
+<property name="line2" value="Mahape"></property>
+
+<property name="city" value="Ghansoli"></property>
+
+<property name="state" value="Maharashtra"></property>
+
+<property name="pincode" value="400730"></property>
+
+</bean>
+
+</property>
+
+</bean>
+
+</constructor-arg>
+
+</bean>
+
+</beans>
+
